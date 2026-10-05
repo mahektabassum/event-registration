@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Event Registration</title>
+  <style>
+    body { font-family: Arial; max-width: 400px; margin: 40px auto; }
+    input, select, button { width: 100%; padding: 8px; margin: 6px 0; }
+  </style>
+</head>
+<body>
+  <h2>Event Registration</h2>
+  <form id="regForm">
+    <input type="text" id="name" placeholder="Full Name" required>
+    <input type="email" id="email" placeholder="Email" required>
+    <input type="tel" id="phone" placeholder="Phone (10 digits)" pattern="[0-9]{10}" required>
+    <select id="event" required>
+      <option value="">Select Event</option>
+      <option>Hackathon</option>
+      <option>Workshop</option>
+      <option>Seminar</option>
+    </select>
+    <button type="submit">Register</button>
+  </form>
+  <p id="msg"></p>
+  <script>
+    document.getElementById("regForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const name = document.getElementById("name").value;
+      const event = document.getElementById("event").value;
+      document.getElementById("msg").innerText =
+        "Thank you " + name + ", you are registered for " + event + "!";
+      this.reset();
+    });
+  </script>
+</body>
+</html>
